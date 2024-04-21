@@ -1,5 +1,6 @@
 package com.hamza.NewsApp.dto;
 
+import java.sql.Timestamp;
 import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
@@ -18,5 +19,5 @@ public class SourceDTO {
     private String url;
     private String category;
     private String author;
-    private LocalDate publishDate;
+    private Timestamp publishDate;
 }

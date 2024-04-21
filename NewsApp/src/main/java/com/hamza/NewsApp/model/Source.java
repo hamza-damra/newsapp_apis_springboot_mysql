@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.Timestamp;
 import java.time.LocalDate;
 @Setter
 @Getter
@@ -30,11 +31,11 @@ public class Source {
     private String author;
 
     @Column(name = "publish_date")
-    private LocalDate publishDate;
+    private Timestamp publishDate;
 
     @PrePersist
     protected void onCreate() {
-        publishDate = LocalDate.now();
+        publishDate = Timestamp.valueOf(LocalDate.now().atStartOfDay());
     }
 
 }
