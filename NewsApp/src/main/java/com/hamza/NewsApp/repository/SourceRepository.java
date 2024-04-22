@@ -8,6 +8,6 @@ import java.util.List;
 public interface SourceRepository extends JpaRepository<Source, Long> {
     List<Source> findByCategory(String category);
 
-    @Query("SELECT s FROM Source s WHERE LOWER(s.description) LIKE LOWER(CONCAT('%', :search, '%')) OR LOWER(s.name) LIKE LOWER(CONCAT('%', :search, '%'))")
-    List<Source> findByDescriptionOrNameContainingIgnoreCase(String search);
+    @Query("SELECT source FROM Source source WHERE LOWER(source.description) LIKE LOWER(CONCAT('%', :search, '%')) OR LOWER(source.name) LIKE LOWER(CONCAT('%', :search, '%'))")
+    List<Source> findByTitleOrDescription(String search);
 }

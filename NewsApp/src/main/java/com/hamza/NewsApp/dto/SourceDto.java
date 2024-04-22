@@ -1,7 +1,6 @@
 package com.hamza.NewsApp.dto;
 
 import java.sql.Timestamp;
-import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,7 +11,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class SourceDTO {
+public class SourceDto {
     private Long id;
     private String name;
     private String description;

@@ -1,6 +1,6 @@
 package com.hamza.NewsApp.service;
 
-import com.hamza.NewsApp.dto.SourceDTO;
+import com.hamza.NewsApp.dto.SourceDto;
 import com.hamza.NewsApp.model.Source;
 import com.hamza.NewsApp.repository.SourceRepository;
 import org.modelmapper.ModelMapper;
@@ -19,36 +19,32 @@ public class NewsService {
         this.modelMapper = modelMapper;
     }
 
-    public List<SourceDTO> getAllSources() {
+    public List<SourceDto> getAllSources() {
         return sourceRepository.findAll().stream()
-                .map(source -> modelMapper.map(source, SourceDTO.class))
+                .map(source -> modelMapper.map(source, SourceDto.class))
                 .collect(Collectors.toList());
     }
 
-    public List<SourceDTO> getSourcesByCategory(String category) {
+    public List<SourceDto> getSourcesByCategory(String category) {
         return sourceRepository.findByCategory(category).stream()
-                .map(source -> modelMapper.map(source, SourceDTO.class))
+                .map(source -> modelMapper.map(source, SourceDto.class))
                 .collect(Collectors.toList());
     }
 
-    public List<SourceDTO> searchSources(String query) {
-        return sourceRepository.findByDescriptionOrNameContainingIgnoreCase(query).stream()
-                .map(source -> modelMapper.map(source, SourceDTO.class))
+    public List<SourceDto> searchSources(String query) {
+        return sourceRepository.findByTitleOrDescription(query).stream()
+                .map(source -> modelMapper.map(source, SourceDto.class))
                 .collect(Collectors.toList());
     }
 
-    public SourceDTO saveSource(SourceDTO sourceDTO) {
+    public SourceDto saveSource(SourceDto sourceDTO) {
         Source source = modelMapper.map(sourceDTO, Source.class);
         source = sourceRepository.save(source);
-        return modelMapper.map(source, SourceDTO.class);
+        return modelMapper.map(source, SourceDto.class);
     }
 
-    public SourceDTO getSourceById(Long id) {
-        Source source = sourceRepository.findById(id).orElse(null);
-        if (source != null) {
-            return modelMapper.map(source, SourceDTO.class);
-        }
-        return null;
+    public SourceDto getSourceById(Long id) {
+        return sourceRepository.findById(id).map(source -> modelMapper.map(source, SourceDto.class)).orElse(null);
     }
 
     public boolean sourceExists(Long id) {
