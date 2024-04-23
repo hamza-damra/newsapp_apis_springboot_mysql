@@ -20,22 +20,23 @@ public class Source {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "name")
     private String name;
 
+    @Column(name = "description")
     private String description;
 
+    @Column(name = "url")
     private String url;
-
+    @Column(name = "category")
     private String category;
 
+    @Column(name = "author")
     private String author;
 
-    @Column(name = "publish_date")
+    @Column(name = "publish_date", columnDefinition = "TIMESTAMP")
     private Timestamp publishDate;
 
-    @PrePersist
-    protected void onCreate() {
-        publishDate = Timestamp.valueOf(LocalDate.now().atStartOfDay());
-    }
+
 
 }

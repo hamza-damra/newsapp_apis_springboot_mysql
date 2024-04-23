@@ -1,10 +1,8 @@
 package com.hamza.NewsApp.controller;
 
 import com.hamza.NewsApp.dto.UserDto;
-import com.hamza.NewsApp.exception.AuthenticationException;
 import com.hamza.NewsApp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
