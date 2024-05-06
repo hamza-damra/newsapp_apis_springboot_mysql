@@ -10,4 +10,6 @@ public interface SourceRepository extends JpaRepository<Source, Long> {
 
     @Query("SELECT source FROM Source source WHERE LOWER(source.description) LIKE LOWER(CONCAT('%', :search, '%')) OR LOWER(source.name) LIKE LOWER(CONCAT('%', :search, '%'))")
     List<Source> findByTitleOrDescription(String search);
+
+    boolean existsByCategory(String category);
 }

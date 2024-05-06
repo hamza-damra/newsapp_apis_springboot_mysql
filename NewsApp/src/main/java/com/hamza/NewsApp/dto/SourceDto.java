@@ -20,4 +20,5 @@ public class SourceDto {
     private String category;
     private String author;
     private LocalDateTime publishDate = LocalDateTime.now();
+    private LocalDateTime lastUpdate;
 }

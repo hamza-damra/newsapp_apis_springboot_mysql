@@ -39,6 +39,9 @@ public class Source {
     @Column(name = "publish_date")
     private LocalDateTime publishDate = LocalDateTime.now();
 
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
+
 
 
 }

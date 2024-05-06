@@ -1,7 +1,5 @@
 package com.hamza.NewsApp.exception;
 
-import jakarta.validation.ConstraintViolationException;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -46,6 +44,20 @@ public class GlobalExceptionHandler {
             errors.put(fieldName, errorMessage);
         });
         return ResponseEntity.badRequest().body(errors);
+    }
+
+    @ExceptionHandler(NewsNotFoundException.class)
+    public ResponseEntity<?> handleSourceNotFoundException(NewsNotFoundException ex) {
+        String response;
+        response = "error: News with id " + ex.getMessage() + " does not exist";
+        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(CategoryNotFoundException.class)
+    public ResponseEntity<?> handleCategoryNotFoundException(CategoryNotFoundException ex) {
+        String response;
+        response = "error: Category with name " + ex.getMessage() + " does not exist";
+        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 
 
