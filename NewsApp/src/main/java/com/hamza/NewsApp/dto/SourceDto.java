@@ -1,6 +1,7 @@
 package com.hamza.NewsApp.dto;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,5 +19,5 @@ public class SourceDto {
     private String url;
     private String category;
     private String author;
-    private Timestamp publishDate;
+    private LocalDateTime publishDate = LocalDateTime.now();
 }

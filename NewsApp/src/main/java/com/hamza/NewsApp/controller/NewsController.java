@@ -23,7 +23,7 @@ public class NewsController {
     }
 
     @GetMapping("/category/{category}")
-    public ResponseEntity<List<SourceDto>> getSourcesByCategory(@PathVariable String category) {
+    public ResponseEntity<List<SourceDto>> getNewsByCategory(@PathVariable String category) {
         List<SourceDto> sources = newsService.getSourcesByCategory(category);
         if (sources.isEmpty()) {
             return ResponseEntity.noContent().build();
@@ -32,7 +32,7 @@ public class NewsController {
     }
 
     @GetMapping("/search")
-    public ResponseEntity<List<SourceDto>> searchSources(@RequestParam String query) {
+    public ResponseEntity<List<SourceDto>> searchNews(@RequestParam String query) {
         List<SourceDto> sources = newsService.searchSources(query);
         if (sources.isEmpty()) {
             return ResponseEntity.noContent().build();
@@ -41,13 +41,13 @@ public class NewsController {
     }
 
     @PostMapping("/addSource")
-    public ResponseEntity<SourceDto> addSource(@RequestBody SourceDto sourceDTO) {
+    public ResponseEntity<SourceDto> addNews(@RequestBody SourceDto sourceDTO) {
         SourceDto savedSource = newsService.saveSource(sourceDTO);
         return ResponseEntity.status(201).body(savedSource);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<SourceDto> getSourceById(@PathVariable Long id) {
+    public ResponseEntity<SourceDto> getNewsById(@PathVariable Long id) {
         SourceDto sourceDTO = newsService.getSourceById(id);
         if (sourceDTO == null) {
             return ResponseEntity.notFound().build();
@@ -56,7 +56,7 @@ public class NewsController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteSource(@PathVariable Long id) {
+    public ResponseEntity<?> deleteNews(@PathVariable Long id) {
         if (!newsService.sourceExists(id)) {
             return ResponseEntity.notFound().build();
         }

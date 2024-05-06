@@ -8,6 +8,8 @@ import lombok.Setter;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Setter
 @Getter
 @AllArgsConstructor
@@ -34,8 +36,8 @@ public class Source {
     @Column(name = "author")
     private String author;
 
-    @Column(name = "publish_date", columnDefinition = "TIMESTAMP")
-    private Timestamp publishDate;
+    @Column(name = "publish_date")
+    private LocalDateTime publishDate = LocalDateTime.now();
 
 
 
